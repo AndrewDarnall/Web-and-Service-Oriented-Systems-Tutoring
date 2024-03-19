@@ -9,12 +9,3 @@ The examples in this directory are well documented and fully functioning
 - Solution Itinere 2023, contains the solution to the 'Prova in itinere' on Threads from the previous academic year
 
 ----
-
-## Running the examples
-
-----
-
-#### MultiTasker.java
-
-- 1) javac MultiTasker.java
-- 2) java MutliTasker
