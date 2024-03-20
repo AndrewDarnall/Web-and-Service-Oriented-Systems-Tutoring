@@ -1,3 +1,9 @@
+## Running the examples
+
+The examples are meant to be run in a commandline terminal, as far as the web-app related examples go,
+they are meant to be viewed using a web browser, however being a web-based example, they can be
+viewed by using the <b>curl</b> or <b>wget</b> tools.
+
 ## Threads
 
 Holds examples regarding the use of threads in Java, implemented either by extending the threads class
