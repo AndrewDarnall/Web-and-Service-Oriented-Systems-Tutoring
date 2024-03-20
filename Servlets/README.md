@@ -9,7 +9,7 @@ A Java servlet is a server-side technology used for developing dynamic web appli
 
 Initialize the Servlet project with the appropriate directory structure using the following command: 
 
-mvn archetype:generate -DgroupId=com.drew -DartifactId=book-store -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.drew -DartifactId=web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
 
 (Tweak the parameters as needed)
 
@@ -19,7 +19,7 @@ mvn archetype:generate -DgroupId=com.drew -DartifactId=book-store -DarchetypeArt
 
 There are two options when it comes to 'testing' locally a Java servlet, either by downloading Apache Tomcat (version >= 10) and running the servlet locally {Not advisable} or by dockerizing the Apache Tomcat server and deploying the servlet to the container, this step requires some additional configuration of the Docker runtime and perhaps a connection to a DevOps pipeline using tools such as Jenkins.
 
-A simpler way to deploy a Java Servlet is to embed a servlet engine within the app itself using the jetty servlet container (injected as a dependency via the Apache Maven build system)
+A simpler way to deploy a Java Servlet is to embed a servlet engine within the app itself using the eclipse jetty servlet container (injected as a dependency via the Apache Maven build system)
 
 ----
 
@@ -28,6 +28,7 @@ A simpler way to deploy a Java Servlet is to embed a servlet engine within the a
 Upon generation, a Maven generated servlet project has a simple structure:
 
 - src
+- webapp/WEB-INF
 - pom.xml
 
 After running the mvn clean install, the entire lifecycle defined in the pom.xml will be executed, generating a 'target' directory where all the .class files, test files and built arficats will be deployed to
@@ -38,6 +39,12 @@ There might be a data directory, for integration with a data pipeline or even an
 What you'll find in a real-world work environment really depends on the product's (and client's) needs from the Web App
 
 Maven has many commands, other types of commands can simply trigger a packaging of the project, without the execution
+
+----
+
+## The WEB-INF directory
+
+The directory holds the web.xml file which has the definitions of the servlet's mappings, in other words it is the configuration file for what would be explicitly programmed in a JavaScript framework such as express.js
 
 ----
 
@@ -55,4 +62,4 @@ command
 # References
 
 - 1) [Apache Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
-- 2) [Maven Quickstart Archetype](https://maven.apache.org/archetypes/maven-archetype-quickstart/)
+- 2) [Maven Web App Archetype](https://maven.apache.org/archetypes/maven-archetype-webapp/)
