@@ -1,39 +1,21 @@
-# Course overview
+## Threads
 
-## TDSW - Module (Prof. G. Pappalardo)
+Holds examples regarding the use of threads in Java, implemented either by extending the threads class
+or by implementing the Runnable interface
 
-- Network Sockets {C}
-- ( Mention of C platform-dependent C directives )
-- The Make build system
-- Apache Tomcat
-- Servlets {Java: javax, jakarta libraries}
-- DB Connectors {JDBC}
-- The PHP programming language
-- Apache Web Server basics
-- ( Java Server Pages Mention )
-- Three Tier Architecture & Multi-tier Architecture
-- The backend and CRUD operations
-- Implementing CRUD operations in fuly working Web App {Java, PHP}
-- Introduction to Composer (package manager)
-- Introduction to Artisan & the Laravel framework
-- Introduction to Laravel's Blade Template Engine
-- Introduction to database schema definitions & migrations in Laravel
-- Laravel web app project
+- MultiTasker.java -> javac MultiTasker.java && java MultiTasker
+- SharingIsCaring.java -> javac SharingIsCaring.java && java SharingIsCaring
+- Solution-Itinere-2023/Main.java -> javac Main.java && java Main
 
-## Lab - Module (Prof. S. Nicotra)
+(JRE: openjdk 16.0.1)
 
-- IntelliJ IDEA configuration
-- Network Sockets {Java}
-- Threads {Java}
-- The Jetty web server and servlet container
-- Apache Maven
-- Containerization & Docker
-- Object Relational Mappers: Hibernate and Java Persistence API
-- Introduction to the Spring Boot framework
-- ( Mention of Java enterprise-level applications )
-- Spring Boot vs Spring MVC vs Spring
-- Spring Boot APIs: Spring Data, Spring JPA
-- (Mention of Spring Boot-based applications applied to Data Engineering )
+-----
+
+## Servlets
+
+Holds servlet examples, deployable to both Apache Tomcat and Eclipse Jetty
+
+- web-app: cd web-app && mvn jetty:run (then curl http://localhost:8080/demoApp)
 
 -----
 
