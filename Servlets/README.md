@@ -122,6 +122,14 @@ docker build -t demoapp .
 docker run -d -p 8080:8080 demoapp
 ```
 
+4) Then go to your `web browser` of choice and:
+
+```bash
+http://localhost:8080/DemoApp/demoApp
+```
+
+* [Important] Notice the difference in the `URL` compared to using `jetty`
+
 # References
 
 - 1) [Apache Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
