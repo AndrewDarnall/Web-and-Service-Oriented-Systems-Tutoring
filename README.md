@@ -1,28 +1,38 @@
-## Running the examples
+# Web and Service Oriented Systems (Tutoring)
 
-The examples are meant to be run in a commandline terminal, as far as the web-app related examples go,
-they are meant to be viewed using a web browser, however being a web-based example, they can be
-viewed by using the <b>curl</b> or <b>wget</b> tools.
+This repo contains code examples seen during the (my) official tutoring for the [course](https://web.dmi.unict.it/corsi/l-31/insegnamenti?seuid=DCA22E7D-5433-432E-AD70-2EF753F662A6), sponsored by the [dept. of Mathematics and Computer Science](https://web.dmi.unict.it/it) of the [University of Catania](https://www.unict.it).
 
-## Threads
+## Requirements
 
-Holds examples regarding the use of threads in Java, implemented either by extending the threads class
-or by implementing the Runnable interface
+| Software    | Version  |
+|-------------|----------|
+| Docker      | `24.0.6` |
+| OpenJDK     | `16.0.1` |
+| Maven       | `3.9.9`  |
 
-- MultiTasker.java -> javac MultiTasker.java && java MultiTasker
-- SharingIsCaring.java -> javac SharingIsCaring.java && java SharingIsCaring
-- Solution-Itinere-2023/Main.java -> javac Main.java && java Main
+## Structure
 
-(JRE: openjdk 16.0.1)
+```bash
+Web-and-Service-Oriented-Systems-Tutoring
+|
+├── Servlets
+└── Threads
+```
 
------
-
-## Servlets
-
-Holds servlet examples, deployable to both Apache Tomcat and Eclipse Jetty
-
-- web-app: cd web-app && mvn jetty:run (then curl http://localhost:8080/demoApp)
+Each directory contains a `topic` dealt during the course, within each topic there are `code examples` and detailed explenations on how to run them
 
 -----
 
-- Official information available in the course's official: TSDW [syllabus](https://web.dmi.unict.it/corsi/l-31/insegnamenti?seuid=BDADA9C3-7994-45D2-9730-F3D7DAFFD6F3) and Lab [syllabus](https://web.dmi.unict.it/corsi/l-31/insegnamenti?seuid=ECDA7A5E-B725-427E-AB24-39FDF7FE2C8F)
+# Get Started
+
+For those of you who are new to `GitHub`, after downloading the `git` client:
+
+```bash
+git clone https://github.com/AndrewDarnall/Web-and-Service-Oriented-Systems-Tutoring.git
+cd Web-and-Service-Oriented-Systems-Tutoring
+```
+
+Then `cd` into any `directory` you please
+
+
+-----

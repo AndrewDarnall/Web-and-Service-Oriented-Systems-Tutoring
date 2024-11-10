@@ -1,6 +1,6 @@
 # Java Servlets
 
-A Java servlet is a server-side technology used for developing dynamic web applications in Java. It runs on the server and handles client requests and generates dynamic web content as responses. Servlets are part of the Java EE (Enterprise Edition) platform and are deployed on servlet containers (e.g., Apache Tomcat, Jetty, and more)
+A Java `servlet` is a server-side technology used for developing `dynamic web applications` in Java. It runs on the server and handles client requests and generates `dynamic web content` as responses. Servlets are part of the `Java EE (Enterprise Edition)` platform and are deployed on `servlet containers` (e.g., Apache Tomcat, Jetty, and more)
 
 ----
 
@@ -9,7 +9,9 @@ A Java servlet is a server-side technology used for developing dynamic web appli
 
 Initialize the Servlet project with the appropriate directory structure using the following command: 
 
+```bash
 mvn archetype:generate -DgroupId=com.drew -DartifactId=web-app -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+```
 
 (Tweak the parameters as needed)
 
@@ -17,47 +19,108 @@ mvn archetype:generate -DgroupId=com.drew -DartifactId=web-app -DarchetypeArtifa
 
 ## Hosting
 
-There are two options when it comes to 'testing' locally a Java servlet, either by downloading Apache Tomcat (version >= 10) and running the servlet locally {Not advisable} or by dockerizing the Apache Tomcat server and deploying the servlet to the container, this step requires some additional configuration of the Docker runtime and perhaps a connection to a DevOps pipeline using tools such as Jenkins.
+There are two options when it comes to 'testing' locally a Java servlet, either by downloading `Apache Tomcat` (version >= 10) and running the servlet locally {Not advisable} or by `containerizing` the Apache Tomcat server with `docker` and uploading the code into the `docker image` and then running the container, this step requires some additional configuration of the `Docker runtime`.
+<br>
+<br>
+The container image can also be built and run using `Apache Maven`, by using the appropriate `pipeline` and `plugins`
 
-A simpler way to deploy a Java Servlet is to embed a servlet engine within the app itself using the eclipse jetty servlet container (injected as a dependency via the Apache Maven build system)
+A simpler way to deploy a Java Servlet is to `embed` a servlet engine within the app itself using the `eclipse jetty` servlet container (injected as a dependency via the Apache Maven build system)
 
 ----
 
 ## The Project's Structure
 
-Upon generation, a Maven generated servlet project has a simple structure:
+The barebones structure of a `servlet` is:
 
-- src
-- webapp/WEB-INF
-- pom.xml
+```bash
+web-app
+|
+├── pom.xml
+└── src
+```
 
-After running the mvn clean install, the entire lifecycle defined in the pom.xml will be executed, generating a 'target' directory where all the .class files, test files and built arficats will be deployed to
-
-Alternatively, there might be other directories which serve various purposes, such as the assets directory, for various types of web app assets, such as the imaegs
-There might be a data directory, for integration with a data pipeline or even an sql directory for DDL DB Schema definitions or migration files
-
-What you'll find in a real-world work environment really depends on the product's (and client's) needs from the Web App
-
-Maven has many commands, other types of commands can simply trigger a packaging of the project, without the execution
+After running the `mvn clean install`, the entire lifecycle defined in the `pom.xml` will be executed, generating a `target` directory where all the `.class files`, test files and built arficats will be locate
 
 ----
 
 ## The WEB-INF directory
 
-The directory holds the web.xml file which has the definitions of the servlet's mappings, in other words it is the configuration file for what would be explicitly programmed in a JavaScript framework such as express.js
+The directory holds the `web.xml` file which has the definitions of the servlet's `mappings`, in other words it is the configuration file for what would be explicitly programmed in a JavaScript framework such as express.js
+
+Below is the `mapping` for the example servlet:
+
+```bash
+<servlet>
+    <servlet-name>SimpleServlet</servlet-name>
+    <servlet-class>App</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>SimpleServlet</servlet-name>
+    <url-pattern>/demoApp</url-pattern>
+</servlet-mapping>
+```
+
+The `<servlet>` tag `binds` the *name* of the servlet to the `class` of the servlet.
+<br>
+The `<servlet-mapping>` tag `binds` the *name* of the servlet with the *url* path `/demoApp`
+
 
 ----
 
 ## Running the app
 
 After all required depencencies have been downloaded to the local maven repository during the initial
-build phase, and after including the Jetty dependency, the web app can be run via the 'mvn jetty:run' 
-command
+build phase, and after including the Jetty dependency, the web app can be run via:
 
--> Remember that the path binding (context path) and the port binding are defined in the pom.xml
--> Make sure you are in the book-store directory (within the project itself) before running any maven command
+```bash
+cd web-app
+mvn jetty:run
+```
+
+Then proceed unto your `browser` of choice and type into the search bar:
+
+```bash
+http://localhost:8080/demoApp
+```
+
+And you wil obtain this result:
+
+![Browser-Request](./imgs/browser-demo.png)
+
+Alternatively you can make 'old school' requests using `curl` or come other `http client`:
+
+```bash
+curl http://localhost:8080/demoApp
+```
+
+![Curl-Request](./imgs/curl-demo.png)
+
 
 ----
+
+# Dockerization
+
+To run the example in a containerized way:
+
+1) `build` the project and create a `.war` file (Web Archive)
+
+```bash
+cd web-app
+mvn clean package
+```
+
+2) Then build the `docker` image from the `Dockerfile`
+
+```bash
+cd ../
+docker build -t demoapp .
+```
+
+3) Finally run the `container` locally
+
+```bash
+docker run -d -p 8080:8080 demoapp
+```
 
 # References
 

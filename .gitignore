@@ -1,4 +1,2 @@
 .vscode
 *.class
-/Servlets/book-store/sql/Dockerfile
-target/
